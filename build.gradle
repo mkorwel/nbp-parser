@@ -3,11 +3,20 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = "pl.parser.nbp.MainClass"
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+run {
+    if(System.getProperty("exec.args") != null) {
+        args System.getProperty("exec.args").split()
+    }
 }
 
 dependencies {
